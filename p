@@ -42,14 +42,13 @@ def main(argv):
 
     if command is None:
         project_type = cfg['project_type'] if 'project_type' in cfg else "Unknown project type"
-        avaible_cmds = '\n'.join([cmd for cmd in sorted(avaible_commands) if not cmd.startswith(f'{cmd_name}-projecttype-')])
         raise ValueError(
-            """
-Unknown command.
-Project type: {}
+            f"""
+Unknown command: {cmd_name}
+Project type: {project_type}
 Avaible Commands:
-{}
-            """.format(project_type,avaible_cmds))
+{available_commands}
+            """)
 
     else:
         return call(
